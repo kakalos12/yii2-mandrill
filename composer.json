@@ -17,7 +17,7 @@
         },
         "autoload": {
                 "psr-4": {
-                        "kakalos12\yii2-mandrill\\": ""
+                        "kakalos12\\yii2-mandrill\\": ""
                 }
         }
 }
