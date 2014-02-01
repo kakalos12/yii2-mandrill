@@ -6,6 +6,8 @@ class MandrillMailer extends \yii\mail\BaseMailer {
 
 	public $apiKey = null;
 
+	public $messageClass = 'kakalos12\mandrill\Message';
+
 	private $_mailer = null;
 
 	/**
@@ -20,12 +22,9 @@ class MandrillMailer extends \yii\mail\BaseMailer {
 
 	}
 
-	public function createSubAccount() {
-
-	}
-
 	/**
 	 * (non-PHPdoc)
+	 *
 	 * @see \yii\mail\BaseMailer::sendMessage()
 	 */
 	public function sendMessage($message) {
