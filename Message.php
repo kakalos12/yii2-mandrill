@@ -8,7 +8,11 @@ class Message extends BaseMessage {
 
 	private $_mandrillMessage = null;
 
-	private $_params = [ ];
+	private $_params = [
+		'track_opens' => true,
+		'track_click' => true,
+		'preserve_recipients' => true
+	];
 
 	/**
 	 * @inheritdoc
@@ -279,14 +283,30 @@ class Message extends BaseMessage {
 
 	}
 
-	/**
-	 * Creates the Swift email message instance.
-	 *
-	 * @return \Swift_Message email message instance.
-	 */
-	protected function createSwiftMessage() {
-		return new \Swift_Message ();
+	public function setFromName($name) {
+		$this->_params ['from_name'] = $name;
+		return $this;
 
 	}
+
+	public function getFromName() {
+		if (isset ( $this->_params ['from_name'] ))
+			return $this->_params ['from_name'];
+		return null;
+
+	}
+
+	public function setHeader($key, $value) {
+		$this->_params ['header'] [$key] = $value;
+		return $this;
+
+	}
+
+	public function setSubAccount($account) {
+		$this->_params ['subaccount'] = $account;
+		return $this;
+
+	}
+
 
 }
