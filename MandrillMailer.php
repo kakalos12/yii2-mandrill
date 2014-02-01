@@ -24,4 +24,12 @@ class MandrillMailer extends \yii\mail\BaseMailer {
 
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see \yii\mail\BaseMailer::sendMessage()
+	 */
+	public function sendMessage($message) {
+
+	}
+
 }
