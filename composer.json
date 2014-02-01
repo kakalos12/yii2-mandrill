@@ -1,5 +1,5 @@
 {
-        "name": "kakalos12/yii2-mandrill",
+        "name": "kakalos12/mandrill",
         "description": "My widget is a cool widget that does everything",
         "keywords": ["yii", "extension", "widget", "cool"],
         "homepage": "https://github.com/kakalos12/yii2-mandrill",
@@ -17,7 +17,7 @@
         },
         "autoload": {
                 "psr-4": {
-                        "kakalos12\\yii2-mandrill\\": ""
+                        "kakalos12\\mandrill\\": ""
                 }
         }
 }
