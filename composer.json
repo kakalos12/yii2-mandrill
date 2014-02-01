@@ -13,7 +13,7 @@
         ],
         "require": {
                 "yiisoft/yii2": "*",
-                "mandrill/mandrill": "*",
+                "mandrill/mandrill": "dev-master",
         },
         "autoload": {
                 "psr-4": {
