@@ -28,6 +28,8 @@ class MandrillMailer extends \yii\mail\BaseMailer {
 	 * @see \yii\mail\BaseMailer::sendMessage()
 	 */
 	public function sendMessage($message) {
+		$result = $this->getMailer ()->messages->send ( $message->getParams () );
+		return $result [0] ['status'] == 'sent' || $result [0] ['status'] == 'queued';
 
 	}
 

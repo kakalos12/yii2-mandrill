@@ -88,7 +88,9 @@ class Message extends BaseMessage {
 			$this->_params ['to'] = $to;
 		else if (is_string ( $to ))
 			$this->_params ['to'] = [
-				'email' => $to
+				[
+					'email' => $to
+				]
 			];
 		return $this;
 
@@ -259,8 +261,8 @@ class Message extends BaseMessage {
 
 	}
 
-	public function getBody() {
-		return '';
+	public function getParams() {
+		return $this->_params;
 
 	}
 
