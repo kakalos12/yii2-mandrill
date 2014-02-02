@@ -308,4 +308,8 @@ class Message extends BaseMessage {
 
 	}
 
+	public function getBody () {
+		return '' ;
+	}
+
 }
