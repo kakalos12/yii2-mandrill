@@ -150,7 +150,7 @@ class Message extends BaseMessage {
 	 * @inheritdoc
 	 */
 	public function setTextBody($text) {
-		$this->setBody ( $text, 'text/plain' );
+		$this->_params ['text'] = $text;
 		return $this;
 
 	}
@@ -159,57 +159,8 @@ class Message extends BaseMessage {
 	 * @inheritdoc
 	 */
 	public function setHtmlBody($html) {
-		$this->setBody ( $html, 'text/html' );
+		$this->_params ['html'] = $html;
 		return $this;
-
-	}
-
-	/**
-	 * Sets the message body.
-	 * If body is already set and its content type matches given one, it will
-	 * be overridden, if content type miss match the multipart message will be composed.
-	 *
-	 * @param string $body
-	 *        	body content.
-	 * @param string $contentType
-	 *        	body content type.
-	 */
-	protected function setBody($body, $contentType) {
-		$message = $this;
-		$oldBody = $message->getBody ();
-		$charset = $message->getCharset ();
-		if (empty ( $oldBody )) {
-			$parts = $message->getChildren ();
-			$partFound = false;
-			foreach ( $parts as $key => $part ) {
-				if (! ($part instanceof \Swift_Mime_Attachment)) {
-					/* @var \Swift_Mime_MimePart $part */
-					if ($part->getContentType () == $contentType) {
-						$charset = $part->getCharset ();
-						unset ( $parts [$key] );
-						$partFound = true;
-						break;
-					}
-				}
-			}
-			if ($partFound) {
-				reset ( $parts );
-				$message->setChildren ( $parts );
-				$message->addPart ( $body, $contentType, $charset );
-			} else {
-				$message->setBody ( $body, $contentType );
-			}
-		} else {
-			$oldContentType = $message->getContentType ();
-			if ($oldContentType == $contentType) {
-				$message->setBody ( $body, $contentType );
-			} else {
-				$message->setBody ( null );
-				$message->setContentType ( null );
-				$message->addPart ( $oldBody, $oldContentType, $charset );
-				$message->addPart ( $body, $contentType, $charset );
-			}
-		}
 
 	}
 
@@ -308,8 +259,9 @@ class Message extends BaseMessage {
 
 	}
 
-	public function getBody () {
-		return '' ;
+	public function getBody() {
+		return '';
+
 	}
 
 }
