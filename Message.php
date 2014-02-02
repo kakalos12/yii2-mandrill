@@ -308,5 +308,4 @@ class Message extends BaseMessage {
 
 	}
 
-
 }
